@@ -5,7 +5,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('restaurantDetail/',views.restaurantDetail),
     path('restaurantCreate/',views.restaurantCreate),
-    path('categoryCreate/',views.categoryCreate),
+    path('restaurantCreate/create',views.Create_restaurant),
+    path('categoryCreate/',views.categoryCreate , name = 'cateCreatePage'),
     path('categoryCreate/create',views.Create_category, name = 'cateCreate'),
     path('categoryCreate/delete',views.Delete_category, name = 'cateDelete'),
     

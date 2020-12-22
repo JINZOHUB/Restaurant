@@ -88,20 +88,20 @@
                     </div>
                 {% endif %}
                 {% endfor %}
-            </div>
+            
 
                     {% for category in categories%} 
                     {% if category.id != 13 %}
                     <form action="./delete" method="POST">{% csrf_token %}
                         <div class="input-group">
                             <span class="input-group-addon" id="" style="border:1px solid #ccc; border-radius: 4px;">{{category.category_name}}</span>
-                            <input type="hidden" name="categoryId" id="categoryId" value="category.id"/>
+                            <input type="hidden" name="categoryId" id="categoryId" value="{{category.id}}"/>
                             <input type="submit" class="resAddBtn btn btn-danger" role="button" value="삭제"/>
                         </div>
                     </form>
                     {% endif %}
                     {% endfor %}
-
+                    
                     <form action="./create" method="POST" onsubmit="return categoryAddCheckFrom();">{% csrf_token %}
                         <div class="input-group">
                             <input type="submit" class="resAddBtn btn btn-success" role="button" value="추가"/>
@@ -110,6 +110,7 @@
                     </form>
                     <a href ="/" class="resAddBtn btn btn-info" role="button">홈으로</a>
                 </div>
+            </div>
 
         </div>
         <div class="panel-footer">

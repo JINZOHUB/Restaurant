@@ -13,7 +13,11 @@ def restaurantDetail(request):
     return render(request, 'shareRes/restaurantDetail.html')
 
 def restaurantCreate(request):
-    return render(request,'shareRes/restaurantCreate.html')
+    categories = Category.objects.all()
+    content = {'categories':categories}
+    
+
+    return render(request,'shareRes/restaurantCreate.html',content)
 
 def categoryCreate(request):
     categories = Category.objects.all()
@@ -32,5 +36,15 @@ def Create_category(request):
 def Delete_category(request):
     category_id = request.POST['categoryId']
     delete_category = Category.objects.get(id = category_id)
-    delete_category.(delete)
+    delete_category.delete()
     return HttpResponseRedirect(reverse('cateCreatePage'))
+
+def Create_restaurant(request):
+    resCategory = request.POST['resCategory']
+    resTitle = request.POST['resTitle']
+    resLink = request.POST['resLink']
+    resContent = request.POST['resContent']
+    resLoc = request.POST['resLoc']
+    new_restaurant = Restaurant(category_id = resCategory,restaurant_name =resTitle ,restaurant_link =resLink ,restaurant_content = resContent, restaurant_keyword =resLoc )
+    new_restaurant.save()
+    return HttpResponseRedirect(reverse('index'))
