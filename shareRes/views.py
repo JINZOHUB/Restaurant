@@ -6,8 +6,18 @@ from .models import *
 def index(request):
     categories = Category.objects.all()
     content = {'categories':categories}
+    new_restaurant = Restaurant.objects.all()
+    for res in new_restaurant:
+        print(res.__dict__)
+
+    for category in categories:
+        print(category.__dict__)
+    restaurants = {'categories':categories,'restaurants':new_restaurant}
+
+
+
     print(categories.__dict__)
-    return render(request, 'shareRes/index.html',content)
+    return render(request, 'shareRes/index.html',restaurants)
 
 def restaurantDetail(request):
     return render(request, 'shareRes/restaurantDetail.html')
